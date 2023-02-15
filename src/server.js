@@ -1,19 +1,11 @@
-const { response } = require('express')
 const express = require('express')
 
 const app = express()
 
-app.get("/message/:id/:user", (request, response) => {
-  const { id, user } = request.params
+app.post("/users", (request, response) => {
+  const { name, email, password} = request.body
 
-  response.send(`Mensagem ID: ${id}.
-  Para o usuário: ${user}. `)
-})
-
-app.get("/users", (request, response) => {
-  const { page, limit } = request.query
-
-  response.send(`Página: ${page}. Mostrar: ${limit}`)
+  response.send(`Usuário: ${name}. E-mail: ${email}. E a senha é: ${password}`)
 })
 
 const PORT = 3333
